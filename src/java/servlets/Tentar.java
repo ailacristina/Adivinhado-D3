@@ -23,16 +23,15 @@ public class Tentar extends HttpServlet {
         return Integer.parseInt((String) sessao.getAttribute(ID_NUMERO_SECRETO));
     }
 
-    private int incrementarNumeroDeTentativas(HttpServletRequest request, HttpServletResponse response) {
+    private void incrementarNumeroDeTentativas(HttpServletRequest request, HttpServletResponse response) {
         HttpSession sessao = request.getSession();
         if (sessao.getAttribute(ID_NUM_TENTATIVAS) == null) {
             sessao.setAttribute(ID_NUM_TENTATIVAS, "1");
-            return 1;
+        } else {
+            int numTentativas = Integer.parseInt((String) sessao.getAttribute(ID_NUM_TENTATIVAS));
+            numTentativas++;
+            sessao.setAttribute(ID_NUM_TENTATIVAS, "" + numTentativas);
         }
-        int numTentativas = Integer.parseInt((String) sessao.getAttribute(ID_NUM_TENTATIVAS));
-        numTentativas++;
-        sessao.setAttribute(ID_NUM_TENTATIVAS, "" + numTentativas);
-        return numTentativas;
     }
 
     private void alterarMensagemDeErro(HttpServletRequest request, HttpServletResponse response, String msg) {
@@ -48,10 +47,11 @@ public class Tentar extends HttpServlet {
         RequestDispatcher rd;
         if (tentativa != numeroSecreto) {
             rd = request.getRequestDispatcher("errou.jsp");
-            if (tentativa > numeroSecreto) 
+            if (tentativa > numeroSecreto) {
                 alterarMensagemDeErro(request, response, "O número que pensei é MENOR do que esse...");
-            else 
+            } else {
                 alterarMensagemDeErro(request, response, "O número que pensei é MAIOR do que esse...");
+            }
         } else {
             rd = request.getRequestDispatcher("acertou.jsp");
         }

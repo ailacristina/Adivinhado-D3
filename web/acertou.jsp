@@ -15,7 +15,7 @@
             <h3>? Adivinhe o número ?</h3>
             <hr/>
             <h1>:)</h1>
-            <p><b>Parabéns</b>, você adivinhou o número em <%= session.getAttribute(servlets.Tentar.ID_NUM_TENTATIVAS) %> tentativas!</p>
+            <p><b>Parabéns</b>, você adivinhou o número em <%= session.getAttribute(servlets.Tentar.ID_NUM_TENTATIVAS) %> tentativa(s)!</p>
             <a href="/Adivinhando/Sair">Sair</a>
         </div>
         <script src="js/jquery-1.12.0.min.js"></script>
