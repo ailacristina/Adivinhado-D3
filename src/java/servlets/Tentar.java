@@ -15,7 +15,7 @@ public class Tentar extends HttpServlet {
     public static final String ID_NUM_TENTATIVAS = "num_tentativas";
     public static final String ID_MSG_ERRO = "msg_erro";
 
-    private int obterNumeroSecreto(HttpServletRequest request, HttpServletResponse response) {
+    private int obterNumeroSecreto(HttpServletRequest request) {
         HttpSession sessao = request.getSession();
         if (sessao.getAttribute(ID_NUMERO_SECRETO) == null) {
             sessao.setAttribute(ID_NUMERO_SECRETO, "" + (int) (Math.random() * 100));
@@ -23,7 +23,7 @@ public class Tentar extends HttpServlet {
         return Integer.parseInt((String) sessao.getAttribute(ID_NUMERO_SECRETO));
     }
 
-    private void incrementarNumeroDeTentativas(HttpServletRequest request, HttpServletResponse response) {
+    private void incrementarNumeroDeTentativas(HttpServletRequest request) {
         HttpSession sessao = request.getSession();
         if (sessao.getAttribute(ID_NUM_TENTATIVAS) == null) {
             sessao.setAttribute(ID_NUM_TENTATIVAS, "1");
@@ -34,21 +34,21 @@ public class Tentar extends HttpServlet {
         }
     }
 
-    private void alterarMensagemDeErro(HttpServletRequest request, HttpServletResponse response, String msg) {
+    private void alterarMensagemDeErro(HttpServletRequest request, String msg) {
         request.setAttribute(ID_MSG_ERRO, msg);
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        incrementarNumeroDeTentativas(request, response);
+        incrementarNumeroDeTentativas(request);
         int tentativa = Integer.parseInt(request.getParameter(ID_TENTATIVA));
-        int numeroSecreto = obterNumeroSecreto(request, response);
+        int numeroSecreto = obterNumeroSecreto(request);
         RequestDispatcher rd;
         if (tentativa != numeroSecreto) {
             if (tentativa > numeroSecreto) {
-                alterarMensagemDeErro(request, response, "O número que pensei é MENOR do que esse...");
+                alterarMensagemDeErro(request, "O número que pensei é MENOR do que esse...");
             } else {
-                alterarMensagemDeErro(request, response, "O número que pensei é MAIOR do que esse...");
+                alterarMensagemDeErro(request, "O número que pensei é MAIOR do que esse...");
             }
             rd = request.getRequestDispatcher("errou.jsp");
         } else {
