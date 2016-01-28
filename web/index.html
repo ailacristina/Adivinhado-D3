@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Adivinhando</title>
+
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <h3>? Adivinhe o número ?</h3>
+            <hr/>
+            <a href="tentar.html">Jogar</a> | 
+            <a href="#" data-toggle="modal" data-target="#myModal">Ajuda</a>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Ajuda</h4>
+                    </div>
+                    <div class="modal-body">
+                        Clique em Jogar, escolha um número entre 0 e 100 e faça tentativas até adivinhar o número que o computador pensou.
+                        Simples assim ;)
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="js/jquery-1.12.0.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+    </body>
+</html>
