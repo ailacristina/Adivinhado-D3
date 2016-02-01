@@ -16,7 +16,7 @@
             <hr/>
             <h1>:(</h1>
             <p><%= request.getAttribute(servlets.Tentar.ID_MSG_ERRO) %></p>
-            <a href="tentar.html">Tentar novamente</a> | <a href="/Adivinhando/Sair">Desistir</a>
+            <a href="tentar.html">Tentar novamente</a> | <a href="/adivinhando/Sair">Desistir</a>
         </div>
         <script src="js/jquery-1.12.0.min.js"></script>
         <script src="js/bootstrap.min.js"></script>

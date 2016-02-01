@@ -9,14 +9,6 @@
         <url-pattern>/Tentar</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>TentarAvancado</servlet-name>
-        <servlet-class>servlets.TentarAvancado</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>TentarAvancado</servlet-name>
-        <url-pattern>/TentarAvancado</url-pattern>
-    </servlet-mapping>
-    <servlet>
         <servlet-name>Sair</servlet-name>
         <servlet-class>servlets.Sair</servlet-class>
     </servlet>
