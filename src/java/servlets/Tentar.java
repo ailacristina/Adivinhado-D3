@@ -35,7 +35,8 @@ public class Tentar extends HttpServlet {
     }
 
     private void alterarMensagemDeErro(HttpServletRequest request, String msg) {
-        request.setAttribute(ID_MSG_ERRO, msg);
+        HttpSession sessao = request.getSession();
+        sessao.setAttribute(ID_MSG_ERRO, msg);
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -43,18 +44,17 @@ public class Tentar extends HttpServlet {
         incrementarNumeroDeTentativas(request);
         int tentativa = Integer.parseInt(request.getParameter(ID_TENTATIVA));
         int numeroSecreto = obterNumeroSecreto(request);
-        RequestDispatcher rd;
+        
         if (tentativa != numeroSecreto) {
             if (tentativa > numeroSecreto) {
                 alterarMensagemDeErro(request, "O número que pensei é MENOR do que esse...");
             } else {
                 alterarMensagemDeErro(request, "O número que pensei é MAIOR do que esse...");
             }
-            rd = request.getRequestDispatcher("errou.jsp");
+            response.sendRedirect("errou.jsp");
         } else {
-            rd = request.getRequestDispatcher("acertou.jsp");
+            response.sendRedirect("acertou.jsp");
         }
-        rd.forward(request, response);
     }
 
     @Override
