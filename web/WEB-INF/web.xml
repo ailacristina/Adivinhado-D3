@@ -4,6 +4,10 @@
         <servlet-name>Tentar</servlet-name>
         <servlet-class>servlets.Tentar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>tentarAvancado</servlet-name>
+        <servlet-class>servlets.tentarAvancado</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Tentar</servlet-name>
         <url-pattern>/Tentar</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>Sair</servlet-name>
         <url-pattern>/Sair</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>tentarAvancado</servlet-name>
+        <url-pattern>/tentarAvancado</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
